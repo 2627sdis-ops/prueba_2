@@ -1,5 +1,5 @@
 FROM python:3.10-slim
-
+PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Copiar e instalar dependencias
@@ -11,7 +11,7 @@ COPY app/ /app/
 
 # Variable de entorno por defecto
 EXPOSE 5000
-PYTHONUNBUFFERED=1
+
 
 # Comando de inicio del servidor V2X-SERVICE
 CMD ["python", "server.py"]
