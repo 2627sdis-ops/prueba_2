@@ -4,7 +4,11 @@ import json
 import threading
 import time
 import boto3
+import sys
 
+if hasattr(sys.stdout, 'reconfigure'):
+  sys.stdout.reconfigure(line_buffering=True)
+  
 # Inicializar cliente SQS
 sqs = boto3.client("sqs", region_name="us-east-1")
 
@@ -56,7 +60,8 @@ def verificar_proximidad():
           PAREJAS_NOTIFICADAS.add(pareja_key)
           print(
               f"⚠️ AVISO PROXIMIDAD: {v1['source_id']} y {v2['source_id']} están"
-              f" a {distancia:.1f}m!"
+              f" a {distancia:.1f}m!",
+              flush=True,
           )
 
   # Limpiar parejas notificadas que ya se han separado (> 120m)
@@ -96,7 +101,16 @@ def consumidor_sqs():
             if source_id:
               location = cuerpo.get("location", {})
               payload = cuerpo.get("payload", {})
+              event_type = cuerpo.get("event_type", "position")
 
+              # 🚨 IMPRIMIR SOLO SI EL EVENTO ES DISTINTO DE "position"
+              if event_type != "position":
+                print(
+                    f"🚨 NUEVO EVENTO [{event_type.upper()}]: Vehículo"
+                    f" {source_id} en X={location.get('x', 0.0)}m",
+                    flush=True,
+                )
+                
               estado_coches[source_id] = {
                   "source_id": source_id,
                   "x": location.get("x", 0.0),
