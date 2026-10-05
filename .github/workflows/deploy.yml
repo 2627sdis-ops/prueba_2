@@ -56,4 +56,4 @@ jobs:
             "updated_at": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
           }
           EOF
-          aws s3 cp manifest.json s3://sdisprueba/manifest.json
+          aws s3 cp manifest.json s3://minuevoprueba1/manifest.json
