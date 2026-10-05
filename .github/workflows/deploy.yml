@@ -38,7 +38,7 @@ jobs:
       - name: 6. Construir imagen Docker y subir a ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: v2x-service
+          ECR_REPOSITORY: mireposdis
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
@@ -50,7 +50,7 @@ jobs:
         run: |
           cat <<EOF > manifest.json
           {
-            "service": "v2x-service",
+            "service": "mireposdis",
             "version": "${{ github.sha }}",
             "image_uri": "${{ env.IMAGE_URI }}",
             "updated_at": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
