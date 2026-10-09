@@ -3,7 +3,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import threading
 import time
-import boto3
+import boto3 
 import sys
 
 if hasattr(sys.stdout, 'reconfigure'):
