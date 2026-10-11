@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitor V2X - Carretera 5 km</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <h1>Simulación V2X en Tiempo Real (Carretera 5 km)</h1>
+
+    <div id="panel-avisos" class="panel-avisos">
+        <h3>⚠️ AVISOS DE PROXIMIDAD DETECTADOS (&lt; 100 m)</h3>
+        <ul id="lista-avisos"></ul>
+    </div>
+
+    <div class="carretera-container">
+        <div class="carril-label">Sentido IDA (0 km ➔ 5 km)</div>
+        <div class="carril" id="carril-ida">
+            <div class="linea-discontinua"></div>
+        </div>
+
+        <div class="carril-label">Sentido VUELTA (5 km ➔ 0 km)</div>
+        <div class="carril" id="carril-vuelta">
+            <div class="linea-discontinua"></div>
+        </div>
+
+        <div class="escala">
+            <span>0 km (0m)</span>
+            <span>1.25 km</span>
+            <span>2.5 km</span>
+            <span>3.75 km</span>
+            <span>5 km (5.000m)</span>
+        </div>
+    </div>
+
+    <h2>Estado de la Flota</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Vehículo</th>
+                <th>Posición (X)</th>
+                <th>Sentido</th>
+                <th>Velocidad</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-coches"></tbody>
+    </table>
+    <script src="/static/js/app.js" defer></script>
+</body>
+</html>
