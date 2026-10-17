@@ -1,8 +1,9 @@
-name: CI/CD Pipeline - V2X Service 
+name: CI/CD Pipeline - V2X Service
 
 on:
   push:
     branches: [ "main" ]
+
 
 jobs: 
   build-and-deploy:
