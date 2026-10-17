@@ -15,7 +15,7 @@ AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 SQS_QUEUE_NAME = os.getenv("SQS_QUEUE_NAME", "v2x-events")
 PORT = int(os.getenv("PORT", "5000"))
 
-sqs = boto3.client("sqs", region_name=AWS_REGION)
+sqs = boto3.client("sqs", region_name=AWS_REGION) 
 
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
