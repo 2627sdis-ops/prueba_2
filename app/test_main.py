@@ -11,6 +11,6 @@ def test_archivos_del_dashboard_existen():
     base = Path(__file__).resolve().parent
     assert (base / "server.py").is_file()
     assert (base / "static" / "index.html").is_file()
-    assert (base / "static" / "css" / "style.css").is_file()
+    assert (base / "static" / "css" / "style.css").is_file()  
     assert (base / "static" / "js" / "app.js").is_file()
 
